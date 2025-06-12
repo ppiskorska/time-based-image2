@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Based Image Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f0f0f0;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Name Here</h1>
+    <h2>Course Name Here</h2>
+    <h3>Your Major Here</h3>
+    <p>Welcome to my webpage! This site shows a different image depending on the current time of day.</p>
+    
+    <img id="timeImage" src="" alt="Time of Day Image">
+
+    <script>
+        function updateImageBasedOnTime() {
+            const now = new Date();
+            const hour = now.getHours();
+            const imgElement = document.getElementById('timeImage');
+            
+            let imageUrl = '';
+            
+            if (hour >= 6 && hour < 12) {
+                imageUrl = 'https://source.unsplash.com/800x500/?sunrise,morning';  // Morning image
+            } else if (hour >= 12 && hour < 18) {
+                imageUrl = 'https://source.unsplash.com/800x500/?sunny,afternoon'; // Afternoon image
+            } else {
+                imageUrl = 'https://source.unsplash.com/800x500/?night,city';      // Evening/Night image
+            }
+            
+            imgElement.src = imageUrl;
+        }
+
+        // Call function when the page loads
+        window.onload = updateImageBasedOnTime;
+    </script>
+</body>
+</html>
